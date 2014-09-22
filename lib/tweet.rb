@@ -4,5 +4,6 @@ class Tweet
 
 	property :id, Serial
 	property :content, Text
+	property :date, String
 
 end

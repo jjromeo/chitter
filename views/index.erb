@@ -1,0 +1,6 @@
+
+<ul>
+	<% @tweets.each do |tweet| %>
+		<li><%= tweet.content %> posted at <%= tweet.date.asctime %></li>
+	<% end %>
+</ul>

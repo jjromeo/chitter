@@ -11,6 +11,7 @@ describe Tweet do
 			tweet = Tweet.first
 			expect(tweet.content).to eq("This is a nice long tweet to show that a tweet is text format and therefore can be quite long.")
 			expect(tweet.date).not_to eq nil
+			puts tweet.date
 			tweet.destroy
 			expect(Tweet.count).to eq(0)
 		end

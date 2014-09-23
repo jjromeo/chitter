@@ -6,4 +6,4 @@
 
 %ul
 	= @tweets.each do |tweet|
-		%li=tweet.content
+		%li="#{tweet.content} posted at #{tweet.date.asctime}"

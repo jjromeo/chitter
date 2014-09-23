@@ -5,6 +5,9 @@ feature "User adds a new tweet" do
 		expect(Tweet.count).to eq(0)
 		visit '/'
 		add_tweet("Look at me adding a nice lil tweet")
+		expect(Tweet.count).to eq(1)
+		tweet = Tweet.first
+		expect(tweet.content).to eq("Look at me adding a nice lil tweet")
 	end
 
 	def add_tweet(content, date = Time.now)

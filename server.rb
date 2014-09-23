@@ -15,5 +15,13 @@ DataMapper.auto_upgrade!
 
 get '/' do 
 	@tweets = Tweet.all
-	haml :index
+	tweet = Tweet.first
+	erb :index
+end
+
+post '/tweets' do 
+	content = params["content"]
+	Tweet.create(	content: content,
+					date: Time.now)
+	redirect to('/')
 end

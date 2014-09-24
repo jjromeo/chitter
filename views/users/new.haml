@@ -1,0 +1,10 @@
+%h1 Please sign up
+
+%form{action:"/users", method:"post"}
+	Desired Username:
+	%input{type:"text", name:"username"}
+	Email address:
+	%input{type:"text", name:"email"} 
+	Password:
+	%input{type:"password", name:"password"}
+	%button Sign up

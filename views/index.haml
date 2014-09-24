@@ -1,9 +1,10 @@
 #add-tweet
-	%form{action:'/tweets', method:"post"}
-		%textarea{type:"text", name:"content"}
-		%button Tweet!
-
+  %form{action:"/tweets", method:"post"}/
+  %textarea{type:"text", name:"content"}
+  %button Tweet!
 
 %ul
-	= @tweets.each do |tweet|
-		%li="#{tweet.content} posted at #{tweet.date.asctime}"
+  - @tweets.each do |tweet|
+    %li
+      = tweet.content
+      posted at #{tweet.date.asctime}

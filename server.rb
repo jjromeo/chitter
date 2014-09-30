@@ -52,6 +52,21 @@ post '/users' do
 	end
 end
 
+get '/sessions/new' do 
+	haml :"sessions/new"
+end
+
+post '/sessions' do 
+	username, password = params[:username], params[:password]
+	user = User.authenticate(username, password)
+	if user
+		session[:user_id] = user.id
+		redirect to('/')
+	else
+		flash[:errors] = ["The email or password is incorrect"]
+		haml :"sessions/new"
+	end
+end
 
 helpers do 
 	def current_user

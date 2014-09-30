@@ -68,6 +68,12 @@ post '/sessions' do
 	end
 end
 
+delete '/sessions' do 
+	session[:user_id] = nil
+	flash[:notice] = "Goodbye!"
+	redirect to('/')
+end
+
 helpers do 
 	def current_user
 		@current_user ||= User.get(session[:user_id]) if session[:user_id]

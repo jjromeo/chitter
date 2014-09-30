@@ -4,9 +4,16 @@
 		= flash[:errors].each do |error|
 			%li= error
 
+-if flash[:notice]
+	#notice
+		= flash[:notice]
+
 %body
 	-if current_user
 		Welcome, #{current_user.username}
+		%form{method:"post", action:"/sessions"}
+			%input{type:"hidden", name:"_method", value:"delete"}
+			%button Sign out
 	-else
 		%a{href:"/sessions/new"} Log in
 

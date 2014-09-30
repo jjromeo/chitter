@@ -2,9 +2,9 @@
 
 %form{action:"/users", method:"post"}
 	Desired Username:
-	%input{type:"text", name:"username"}
+	%input{type:"text", name:"username", value:"#{@user.username}"}
 	Email address:
-	%input{type:"text", name:"email"} 
+	%input{type:"text", name:"email", value:"#{@user.email}"} 
 	Password:
 	%input{type:"password", name:"password"}
 	Password confirmation:

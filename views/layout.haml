@@ -1,5 +1,8 @@
--if flash[:notice]
-	#notice= flash[:notice]
+-if flash[:errors] && !flash[:errors].empty?
+	Sorry, there were the following problems with the form.
+	#errors
+		= flash[:errors].each do |error|
+			%li= error
 
 %body
 	-if current_user

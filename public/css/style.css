@@ -1,0 +1,23 @@
+header h1 {
+	margin:	0;
+	display: inline;
+}
+
+header {
+	background-color: silver;
+}
+
+header a {
+	display: inline;
+	position: relative;
+	left: 60%;
+}
+
+header ul, header ul li a {
+	display: inline;
+}
+
+li {
+	list-style: none;
+}
+

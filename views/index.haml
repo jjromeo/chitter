@@ -4,8 +4,9 @@
 		%textarea{type:"text", name:"content"}
 		%button Tweet!
 
-%ul
-	- @tweets.each do |tweet|
-		%li
-			= tweet.content
-			posted at #{tweet.date.asctime}
+#tweets
+	%ul
+		- @tweets.each do |tweet|
+			%li
+				= tweet.content
+				posted at #{tweet.date.asctime}

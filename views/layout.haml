@@ -1,22 +1,30 @@
--if flash[:errors] && !flash[:errors].empty?
-	Sorry, there were the following problems with the form.
-	#errors
-		= flash[:errors].each do |error|
-			%li= error
-
-%h1 Chitter
-
--if flash[:notice]
-	#notice
-		= flash[:notice]
-
+%link{rel:"stylesheet", type:"text/css", href:"css/normalize.css"}
+%link{rel:"stylesheet", type:"text/css", href:"css/style.css"}
 %body
-	-if current_user
-		Welcome, #{current_user.username}
-		%form{method:"post", action:"/sessions"}
-			%input{type:"hidden", name:"_method", value:"delete"}
-			%button Sign out
-	-else
-		%a{href:"/sessions/new"} Log in
+	-if flash[:errors] && !flash[:errors].empty?
+		Sorry, there were the following problems with the form.
+		#errors
+			= flash[:errors].each do |error|
+				%li= error
+	%header
+		%h1 Chitter
+		-if current_user
+			Welcome, #{current_user.username}
+			%form{method:"post", action:"/sessions"}
+				%input{type:"hidden", name:"_method", value:"delete"}
+				%button Sign out
+
+		-if flash[:notice]
+			#notice
+				= flash[:notice]
+
+
+
+		-else
+			%ul
+				%li
+					%a{href:"/sessions/new"} Log in
+				%li
+					%a{href:"/users/new"} Sign up
 
 	=yield

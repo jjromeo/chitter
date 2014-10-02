@@ -27,9 +27,15 @@ end
 	
 post '/tweets' do 
 	content = params["content"]
-	Tweet.create(	content: content,
-					date: Time.now)
-	redirect to('/')
+	user = current_user
+	if user
+		user.tweets.create(	content: content,
+							date: Time.now)
+		redirect to('/')
+	else
+		flash[:notice] = "You must log in in order to post a tweet!"
+		redirect to('/')
+	end
 end
 
 
@@ -63,7 +69,7 @@ post '/sessions' do
 		session[:user_id] = user.id
 		redirect to('/')
 	else
-		flash[:errors] = ["The email or password is incorrect"]
+		flash[:errors] = ["The username or password is incorrect"]
 		haml :"sessions/new"
 	end
 end

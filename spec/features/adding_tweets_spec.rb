@@ -3,24 +3,26 @@ require_relative 'helpers/session'
 
 feature "User adds a new tweet" do 
 	include SessionHelpers
-
 	scenario "when browsing the homepage" do 
-		
-		sign_up
-		expect(Tweet.count).to eq(0)
 		visit '/'
+		sign_up
 		add_tweet("Look at me adding a nice lil tweet")
-		expect(Tweet.count).to eq(1)
-		tweet = Tweet.first
-		expect(tweet.content).to eq("Look at me adding a nice lil tweet")
+		expect(page).to have_content("Look at me adding a nice lil tweet")
 	end
 
 	def add_tweet(content, date = Time.now)
-	within('#add-tweet') do 
+		within('#add-tweet') do 
 		fill_in 'content', with: content
 		click_button 'Tweet'
 		end
 	end
+
+	scenario "Non-signed in user tries to add a tweet" do
+		visit '/'
+		add_tweet("Look at me adding a nice lil tweet")
+		expect(page).to have_content("You must log in in order to post a tweet!")
+	end
+
 
 end
 

@@ -1,12 +1,12 @@
-- if current_user
-	#add-tweet
-		%form{action:"/tweets", method:"post"}/
-		%textarea{type:"text", name:"content"}
-		%button Tweet!
+#add-tweet
+	%form{action:"/tweets", method:"post"}/
+	%textarea{type:"text", name:"content"}
+	%button Tweet!
 
 #tweets
 	%ul
-		- @tweets.each do |tweet|
-			%li
-				= tweet.content
-				posted at #{tweet.date.asctime}
+		-if @tweets
+			- @tweets.each do |tweet|
+				%li
+					= tweet.content
+					posted at #{tweet.date.asctime}

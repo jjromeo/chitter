@@ -6,4 +6,6 @@ class Tweet
 	property :content, Text
 	property :date, DateTime
 
+	belongs_to :user
+
 end

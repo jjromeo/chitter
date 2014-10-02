@@ -29,4 +29,7 @@ class User
 	validates_uniqueness_of :email
 	validates_uniqueness_of :username
 
+	has n, :tweets
+
+
 end

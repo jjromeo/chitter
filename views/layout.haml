@@ -6,6 +6,11 @@
 		#errors
 			= flash[:errors].each do |error|
 				%li= error
+	-if flash[:notice]
+		#notice
+			= flash[:notice]
+
+
 	%header
 		%h1 Chitter
 		-if current_user
@@ -13,12 +18,6 @@
 			%form{method:"post", action:"/sessions"}
 				%input{type:"hidden", name:"_method", value:"delete"}
 				%button Sign out
-
-		-if flash[:notice]
-			#notice
-				= flash[:notice]
-
-
 
 		-else
 			%ul

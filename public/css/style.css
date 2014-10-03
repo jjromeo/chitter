@@ -1,6 +1,9 @@
+body {
+	height: 100%;
+}
 header h1 {
 	margin:	0;
-	display: inline;
+	text-align: center;
 }
 
 header {
@@ -21,3 +24,20 @@ li {
 	list-style: none;
 }
 
+#tweet-box {
+	text-align: center;
+}
+
+#tweet-box textarea {
+	height: 80px;
+	width: 280px
+}
+
+#tweets {
+	text-align: center;
+}
+
+#tweets li {
+	padding-bottom: 10px;
+	border: groove;
+}

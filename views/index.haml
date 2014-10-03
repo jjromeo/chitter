@@ -1,6 +1,6 @@
 #add-tweet
-	%form{action:"/tweets", method:"post"}/
-	%textarea{type:"text", name:"content"}
+	%form{action:"/tweets", method:"post", id:"tweet-box"}/
+	%textarea{type:"text", name:"content", placeholder: "What would you like to say?"}
 	%button Tweet!
 
 #tweets

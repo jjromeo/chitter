@@ -1,5 +1,5 @@
 require 'spec_helper'
-require_relative 'helpers/session'
+require_relative '../helpers/session'
 
 feature "User signs in" do 
     include SessionHelpers

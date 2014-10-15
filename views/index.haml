@@ -1,7 +1,7 @@
 #add-tweet
-	%form{action:"/tweets", method:"post", id:"tweet-box"}/
-	%textarea{type:"text", name:"content", placeholder: "What would you like to say?"}
-	%button Tweet!
+	%form{action:"/tweets", method:"post", id:"tweet-box"}
+		%textarea{type:"text", name:"content", placeholder: "What would you like to say?"}
+		%button Tweet!
 
 #tweets
 	%ul
@@ -9,4 +9,4 @@
 			- @tweets.each do |tweet|
 				%li
 					= tweet.content
-					posted at #{tweet.date.asctime}
+					posted at #{tweet.date.asctime} by #{tweet.user.username}

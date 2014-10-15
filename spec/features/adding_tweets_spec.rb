@@ -23,6 +23,13 @@ feature "User adds a new tweet" do
 		expect(page).to have_content("You must log in in order to post a tweet!")
 	end
 
+	scenario "signed in user posts a tweet" do 
+		visit '/'
+		sign_up
+		add_tweet("Look at me adding a nice lil tweet")
+		expect(page).to have_content('by Jerome')
+	end
+
 
 end
 

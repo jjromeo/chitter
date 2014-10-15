@@ -20,16 +20,16 @@ enable :sessions
 set :session_secret, 'super secret'
 
 get '/' do 
+	@user = current_user
 	@tweets = Tweet.all
-	tweet = Tweet.first
 	haml :index
 end
 	
 post '/tweets' do 
 	content = params["content"]
-	user = current_user
-	if user
-		user.tweets.create(	content: content,
+	@user = current_user
+	if @user
+		@user.tweets.create(	content: content,
 							date: Time.now)
 		redirect to('/')
 	else

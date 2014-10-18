@@ -29,7 +29,7 @@ feature "User personal features" do
   	end
 
   	it "does not display other users' tweets" do 
-  		sign_up_other
+  		sign_up('James', 'james@test.com')
   		add_tweet("This tweet should not be on Jerome's profile")
   		sign_out
   		sign_up
@@ -39,7 +39,7 @@ feature "User personal features" do
   	end
 
   	it "can view another users profile" do 
-  		sign_up_other
+  		sign_up('James', 'james@test.com')
   		add_tweet("This is James' tweet")
   		sign_out
   		sign_up
@@ -51,6 +51,9 @@ end
 
 
 feature 'following a user' do
+	include SessionHelpers
+    include TweetHelpers
+
 	context 'a users follower count can be updated' do 
 		before do 
 			@jerome = User.create(	username:"Jerome",
@@ -64,10 +67,22 @@ feature 'following a user' do
 			@links = User::Link.all
 		end
 
-		it 'can follow other users' do 
+		it 'knows when it follows another user' do 
 			expect(@james.followed_people.count).to eq 0
 			@james.follow(@jerome)
 			expect(@james.followed_people.count).to eq 1
+		end
+
+		it 'can follow a user on their profile' do 
+			expect(@james.followed_people.count).to eq 0
+			sign_in
+			add_tweet('I (Jerome) love to tweet')
+			sign_out
+			sign_in('James')
+			click_link('Jerome')
+			click_button('follow')
+			expect(@james.followed_people.count).to eq 1
+
 		end
 
 

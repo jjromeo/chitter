@@ -1,3 +1,7 @@
+%form{action:"/users/follow_other", method:"post"}
+	%input{type:"hidden", value:"#{@other_user.id}", name:"other"}
+	%button follow
+
 - if @other_user.tweets.empty?
 	= "#{@other_user.username} hasn't tweeted yet"
 - else

@@ -49,6 +49,12 @@ get '/profile/:user' do
 	end
 end
 
+post "/users/follow_other" do 
+	other = User.first(params[:other])
+	user = current_user
+	user.follow(other)
+end
+
 get '/my_profile' do 
 	@user = current_user
 	haml :"/users/user_profile"

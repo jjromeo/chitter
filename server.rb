@@ -43,7 +43,7 @@ get '/profile/:user' do
 	@other_user = User.first(profile_username)
 	@user = current_user
 	if @user == @other_user
-		redirect_to '/my_profile'
+		redirect to '/my_profile'
 	else
 		haml :"/users/other_profile"
 	end

@@ -38,6 +38,10 @@ post '/tweets' do
 	end
 end
 
+get '/my_profile' do 
+	@user = current_user
+	haml :"/users/user_profile"
+end
 
 get '/users/new' do
 	@user = User.new

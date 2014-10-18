@@ -1,8 +1,11 @@
 require 'spec_helper'
 require_relative 'helpers/session'
+require_relative 'helpers/tweet'
 
 feature "User adds a new tweet" do 
 	include SessionHelpers
+	include TweetHelpers
+
 	scenario "when browsing the homepage" do 
 		visit '/'
 		sign_up
@@ -10,12 +13,6 @@ feature "User adds a new tweet" do
 		expect(page).to have_content("Look at me adding a nice lil tweet")
 	end
 
-	def add_tweet(content, date = Time.now)
-		within('#add-tweet') do 
-		fill_in 'content', with: content
-		click_button 'Tweet'
-		end
-	end
 
 	scenario "Non-signed in user tries to add a tweet" do
 		visit '/'

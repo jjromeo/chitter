@@ -1,1 +1,9 @@
-Your tweets will show here
+- if @user.tweets.empty?
+	Your tweets will show here
+- else
+	#tweets
+	%ul
+		- @user.tweets.each do |tweet|
+			%li
+				= tweet.content
+				posted at #{tweet.date.asctime} by #{tweet.user.username}

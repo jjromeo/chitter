@@ -28,6 +28,16 @@ feature "User personal features" do
   		expect(page).to have_content("This tweet should be on my profile!")
   	end
 
+  	it "does not display other users' tweets" do 
+  		sign_up_other
+  		add_tweet("This tweet should not be on Jerome's profile")
+  		sign_out
+  		sign_up
+  		click_link("Jerome")
+  		expect(page).to have_content("Your tweets will show here")
+  		expect(page).not_to have_content("This tweet should not be on Jerome's profile")
+  	end
+
 end
 
 

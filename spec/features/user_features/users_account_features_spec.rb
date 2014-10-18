@@ -17,14 +17,14 @@ feature "User personal features" do
 
   	it "has their own profile page prompting them to tweet if they haven't" do 
 		sign_up
-		click_link("Jerome")
+		click_link("Profile")
 		expect(page).to have_content("Your tweets will show here")
   	end
 
   	it "displays their tweets" do 
   		sign_up
   		add_tweet("This tweet should be on my profile!")
-  		click_link("Jerome")
+  		click_link("Profile")
   		expect(page).to have_content("This tweet should be on my profile!")
   	end
 
@@ -33,11 +33,19 @@ feature "User personal features" do
   		add_tweet("This tweet should not be on Jerome's profile")
   		sign_out
   		sign_up
-  		click_link("Jerome")
+  		click_link("Profile")
   		expect(page).to have_content("Your tweets will show here")
   		expect(page).not_to have_content("This tweet should not be on Jerome's profile")
   	end
 
+  	it "can view another users profile" do 
+  		sign_up_other
+  		add_tweet("This is James' tweet")
+  		sign_out
+  		sign_up
+  		click_link("James")
+  		expect(page).to have_content("This is James' tweet")
+  	end
 end
 
 

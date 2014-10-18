@@ -9,4 +9,5 @@
 			- @tweets.each do |tweet|
 				%li
 					= tweet.content
-					posted at #{tweet.date.asctime} by #{tweet.user.username}
+					posted at #{tweet.date.asctime} by
+					%a{href:"/profile/#{tweet.user.username}"}= "#{tweet.user.username}"

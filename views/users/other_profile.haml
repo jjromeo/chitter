@@ -1,0 +1,9 @@
+- if @other_user.tweets.empty?
+	= "#{@other_user.username} hasn't tweeted yet"
+- else
+	#tweets
+	%ul
+		- @other_user.tweets.each do |tweet|
+			%li
+				= tweet.content
+				posted at #{tweet.date.asctime} by #{tweet.user.username}

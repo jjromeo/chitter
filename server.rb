@@ -38,6 +38,17 @@ post '/tweets' do
 	end
 end
 
+get '/profile/:user' do 
+	profile_username = params[:user]
+	@other_user = User.first(profile_username)
+	@user = current_user
+	if @user == @other_user
+		redirect_to '/my_profile'
+	else
+		haml :"/users/other_profile"
+	end
+end
+
 get '/my_profile' do 
 	@user = current_user
 	haml :"/users/user_profile"

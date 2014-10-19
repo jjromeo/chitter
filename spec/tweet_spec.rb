@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe Tweet do 
 
-	context "Demonstration of how datamapper works" do 
-		it "should be created and then retried from the db" do 
+	context "Can be created and added into database" do 
+		it "Belongs to a user" do 
 			user =  User.create(username:"Jerome",
                     email:"Jerome@test.com",
                     password:"test",

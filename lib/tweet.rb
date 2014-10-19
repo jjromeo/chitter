@@ -7,5 +7,6 @@ class Tweet
 	property :date, DateTime
 
 	belongs_to :user
+	has n, :hashtags, through: Resource
 
 end

@@ -9,6 +9,7 @@ DataMapper.setup(:default, "postgres://localhost/chitter_#{env}")
 
 require './lib/tweet'
 require './lib/user'
+require './lib/hashtag'
 
 DataMapper.finalize
 

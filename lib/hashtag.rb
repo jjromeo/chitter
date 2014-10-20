@@ -10,3 +10,8 @@ class Hashtag
 	has n, :tweets, through: Resource
 
 end
+
+# tweet = Tweet.create
+# hashtag = Hashtag.create
+# tweet.hashtags << hashtag
+# tweet.hashtags.save

@@ -30,8 +30,9 @@ post '/tweets' do
 	content = params["content"]
 	@user = current_user
 	if @user
-		@user.tweets.create(	content: content,
+		newtweet = @user.tweets.create(content: content,
 							date: Time.now)
+		parse_hashtags(newtweet)
 		redirect to('/')
 	else
 		flash[:notice] = "You must log in in order to post a tweet!"
@@ -100,6 +101,14 @@ delete '/sessions' do
 	session[:user_id] = nil
 	flash[:notice] = "Goodbye!"
 	redirect to('/')
+end
+
+def parse_hashtags(tweet)
+	if tweet.content.include?("#")
+		content_array = tweet.content.split
+		hashtags = content_array.select {|word| word.start_with?('#')}
+		hashtags.map {|hashtag| tweet.hashtags.create(content: hashtag, href:"hashtags/#{hashtag}", tweet_id: tweet.id )}
+	end
 end
 
 helpers do 

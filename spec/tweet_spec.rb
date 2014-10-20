@@ -10,7 +10,7 @@ describe Tweet do
                     password_confirmation: "test")
 			expect(user.tweets.count).to eq(0)
 			user.tweets.create(	content: "This is a nice long tweet to show that a tweet is text format and therefore can be quite long.",
-							date: Time.now)
+								date: Time.now)
 			expect(user.tweets.count).to eq(1)
 			tweet = user.tweets.first
 			expect(tweet.content).to eq("This is a nice long tweet to show that a tweet is text format and therefore can be quite long.")

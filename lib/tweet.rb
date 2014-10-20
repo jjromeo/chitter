@@ -9,4 +9,7 @@ class Tweet
 	belongs_to :user
 	has n, :hashtags, through: Resource
 
+
+
 end
+

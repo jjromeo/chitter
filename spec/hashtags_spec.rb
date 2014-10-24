@@ -18,6 +18,7 @@ describe Hashtag do
 			expect(Hashtag.count).to eq 1
 			expect(Hashtag.first.content).to eq "#awesome"
 		end
+
 	end
 
 end

@@ -107,6 +107,7 @@ DEPENDENCIES
   capybara
   database_cleaner
   datamapper
+  dm-constraints
   dm-postgres-adapter
   haml
   rack-flash3

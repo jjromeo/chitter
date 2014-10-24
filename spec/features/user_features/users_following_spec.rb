@@ -36,6 +36,10 @@ feature 'following a user' do
 			expect(@james.followed_people.count).to eq 1
 		end
 		
+		# it 'and shows on their profile' do 
+		# 	sign_in
+		# 	click_link
+		# end
 
 
 	end

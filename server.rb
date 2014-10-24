@@ -1,4 +1,5 @@
 require 'data_mapper'
+require 'dm-constraints'
 require 'sinatra'
 require 'haml'
 require 'rack-flash'
@@ -30,9 +31,14 @@ post '/tweets' do
 	content = params["content"]
 	@user = current_user
 	if @user
-		newtweet = @user.tweets.create(content: content,
-							date: Time.now)
-		parse_hashtags(newtweet)
+		@newtweet = @user.tweets.create(content: content,
+										date: Time.now)
+		parse_hashtags(@newtweet)
+		@newtweet.hashtags.each do |hashtag|
+			@newtweet.content.gsub(/\#(#{hashtag.content})/, "\n %a={href:'/hashtags/search/#{hashtag.content}' #{hashtag.content}")
+			@newtweet.save!
+			hashtag.save!
+		end
 		redirect to('/')
 	else
 		flash[:notice] = "You must log in in order to post a tweet!"

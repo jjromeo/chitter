@@ -1,1 +1,1 @@
-This is a project to practice several technologies including Rspec, capybara, ruby, sinatra, html and css
+This is a project in which we were instructed to recreate the popular social network TwitterThis enabled me to practice several technologies used include: Rspec, capybara, ruby, sinatra, postgresql, datamapper, html and css.

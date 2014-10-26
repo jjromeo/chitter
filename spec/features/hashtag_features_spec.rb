@@ -9,6 +9,7 @@ feature 'clickable hashtags' do
             password:"test",
             password_confirmation: "test")
 			@newtweet = @user.tweets.create(content: 'I am such a #hashtagger', date: Time.now)
+			@newtweet2 = @user.tweets.create(content: 'The life of a #hashtagger', date: Time.now)
 		end
 
 	it "is a clickable link to other tweets with the same hashtag" do 
@@ -26,5 +27,6 @@ feature 'clickable hashtags' do
 		visit '/'
 		click_link '#hashtagger'
 		expect(page).to have_content   'I am such a #hashtagger'	
+		expect(page).to have_content   'The life of a #hashtagger'	
 	end
 end

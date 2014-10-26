@@ -28,9 +28,12 @@ get '/' do
 end
 
 get '/hashtags/:hashtag' do 
-	hashtag = params[:hashtag]
-	@tagged_tweets = Tweet.all.select {|tweet| tweet.hashtags.include?(hashtag)}
+	@hashtag = params[:hashtag]
+	@tagged_tweets = Tweet.all.select {|tweet| tweet.content.include?("#{@hashtag}")
+	}
+	haml :"/hashtags/search"
 end
+
 
 post '/tweets' do 
 	content = params["content"]
@@ -114,7 +117,7 @@ def parse_hashtags(tweet)
 	if tweet.content.include?("#")
 		content_array = tweet.content.split
 		hashtags = content_array.select {|word| word.start_with?('#')}
-		hashtags.map {|hashtag| tweet.hashtags.create(content: hashtag, href:"hashtags/#{hashtag}", tweet_id: tweet.id )}
+		hashtags.map {|hashtag| tweet.hashtags.create(content: hashtag, href:"hashtags/#{hashtag.slice(1..-1)}", tweet_id: tweet.id )}
 	end
 end
 

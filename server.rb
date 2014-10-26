@@ -26,7 +26,12 @@ get '/' do
 	@tweets = Tweet.all
 	haml :index
 end
-	
+
+get '/hashtags/:hashtag' do 
+	hashtag = params[:hashtag]
+	@tagged_tweets = Tweet.all.select {|tweet| tweet.hashtags.include?(hashtag)}
+end
+
 post '/tweets' do 
 	content = params["content"]
 	@user = current_user

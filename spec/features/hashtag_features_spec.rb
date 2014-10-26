@@ -11,10 +11,11 @@ feature 'clickable hashtags' do
 		end
 
 	it "is a clickable link to other tweets with the same hashtag" do 
-		newtweet = @user.tweets.create(content: 'I am such a #hashtagger')
+		newtweet = @user.tweets.create(content: 'I am such a #hashtagger', date: Time.now)
 		parse_hashtags(newtweet)
+		render_hashtags(newtweet)
 		visit '/'
-		click_link('#hashtagger')
+		expect(page).to have_link '#hashtagger'
 	end
 
 end

@@ -22,7 +22,7 @@ enable :sessions
 set :session_secret, 'super secret'
 
 get '/' do 
-	@user = current_user
+@user = current_user
 	@tweets = Tweet.all
 	haml :index
 end

@@ -1,20 +1,21 @@
 body {
 	height: 100%;
+    font-family: 'Molengo', sans-serif
 }
-header h1 {
+header a.brand-link {
+    text-decoration: none;
+    font-size: 4em;
 	margin:	0;
-	text-align: center;
+    font-family: 'Molengo', sans-serif;
+    color: white;
 }
 
 header {
-	background-color: silver;
+    background-color: rgba(217, 148, 84, 0.9);
+    border: 1 solid;
+    margin-bottom: 10px;
 }
 
-header a {
-	display: inline;
-	position: relative;
-	left: 60%;
-}
 
 header ul, header ul li a {
 	display: inline;
@@ -35,9 +36,14 @@ li {
 
 #tweets {
 	text-align: center;
+    padding: none;
+}
+
+#tweets ul {
+    padding: 0;
+    margin: none;
 }
 
 #tweets li {
-	padding-bottom: 10px;
-	border: groove;
+	border: solid;
 }

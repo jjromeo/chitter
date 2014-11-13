@@ -1,4 +1,4 @@
-
+[![Code Climate](https://codeclimate.com/github/jjromeo/chitter/badges/gpa.svg)](https://codeclimate.com/github/jjromeo/chitter)
 Chitter
 =======
 

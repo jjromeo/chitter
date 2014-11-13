@@ -2,7 +2,7 @@
 Chitter
 =======
 
-This is a project in which we were instructed to recreate the popular social network Twitter
+This is a project in which we were instructed to recreate the popular social network Twitter, it was useful for consolidating our knowledge of ORM's and of using ruby code logic on our web pages.
 
 Technologies used include:
 -----------------------
@@ -12,6 +12,7 @@ Technologies used include:
 - Postgresql
 - Haml
 - Css
+- Datamapper ORM
 
 How to use: 
 -------------

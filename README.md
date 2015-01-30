@@ -21,5 +21,5 @@ How to use:
 3. ruby server.rb
 4. visit localhost (default port 4567)
 
-Soon to be up on Heroku.
+
 
